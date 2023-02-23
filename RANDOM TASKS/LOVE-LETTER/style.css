@@ -1,0 +1,24 @@
+body {
+    background: lightpink;
+    margin: 10%;
+}
+
+h1 {
+    text-align: center;
+    font-family: "Papyrus", fantasy;
+    
+    }
+
+p.letter {
+    text-align: left;
+    font-family: "Lucida Handwriting", cursive;
+    font-size: x-large
+}
+
+
+p.signature {
+    text-align: right;
+    font-family: "Lucida Handwriting", cursive;
+    font-size: xx-large
+}
+

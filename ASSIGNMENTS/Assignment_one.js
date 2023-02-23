@@ -124,3 +124,22 @@ function isStraight(hand) {
   }
   return "You have a Straight!";
 }
+
+// Define function for a Straight Flush
+
+function isStraightFlush(hand) {
+  const suits = hand.map(function (card) {
+    return card.split(" ")[0];
+  });
+  if (
+    suits.every(function (suit) {
+      return suit === suits[0];
+    })
+  )
+    for (let i = 1; i < hand.length; i++) {
+      if (hand[i] === hand[i - 1] + 1) {
+        return "You have a Straight Flush!";
+      } else return "";
+    }
+}
+console.log(isStraightFlush(hand));
