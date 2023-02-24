@@ -1,7 +1,7 @@
 NUM_TRIALS = 1000;
 
 function drawOneCard() {
-  const suits = ["H", "C"];
+  const suits = ["H", "C", "D", "H"];
   const numbers = [
     "2",
     "3",
@@ -65,10 +65,10 @@ function isThreeOfAKind(hand) {
   for (let i = 0; i < ranks.length; i++) {
     const count = ranks.filter((rank) => rank === ranks[i]).length;
     if (count === 3) {
-      threeCount++;
       return "You have three of a kind!";
-    } else return "";
+    }
   }
+  return "";
 }
 
 console.log(isThreeOfAKind(hand));
@@ -83,8 +83,10 @@ function isFourOfAKind(hand) {
     if (count === 4) {
       fourCount++;
       return "You have four of a kind!";
-    } else return "";
+    }
   }
+
+  return "";
 }
 
 console.log(isFourOfAKind(hand));
