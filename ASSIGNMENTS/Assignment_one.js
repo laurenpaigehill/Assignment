@@ -101,6 +101,7 @@ function fullHouse(hand) {
     if (count === 3) {
       for (let j = 0; j < ranks.length; j++) {
         if (j !== i && ranks[j] === ranks[i] && j === 2) {
+          houseCount++;
           return "You have a full house";
         }
       }
@@ -123,6 +124,7 @@ function isStraight(hand) {
       return "";
     }
   }
+  straightCount++;
   return "You have a Straight!";
 }
 
@@ -144,6 +146,7 @@ function isStraightFlush(hand) {
         return "";
       }
     }
+    straightFlushCount++;
     return "You have a Straight Flush!";
   } else {
     return "";
@@ -157,6 +160,9 @@ console.log(isStraightFlush(hand));
 let flushCount = 0;
 let threeCount = 0;
 let fourCount = 0;
+let houseCount = 0;
+let straightCount = 0;
+let straightFlushCount = 0;
 
 for (let i = 0; i < NUM_TRIALS; i++) {
   const hand = drawFiveCards();
@@ -173,6 +179,21 @@ for (let i = 0; i < NUM_TRIALS; i++) {
   isFourOfAKind(hand);
 }
 
+for (let i = 0; i < NUM_TRIALS; i++) {
+  const hand = drawFiveCards();
+  fullHouse(hand);
+}
+
+for (let i = 0; i < NUM_TRIALS; i++) {
+  const hand = drawFiveCards();
+  isStraight(hand);
+}
+
+for (let i = 0; i < NUM_TRIALS; i++) {
+  const hand = drawFiveCards();
+  isStraightFlush(hand);
+}
+
 console.log(
   `The empirical probability of getting a flush is: ${flushCount / NUM_TRIALS}%`
 );
@@ -186,5 +207,23 @@ console.log(
 console.log(
   `The empirical probability of getting Four of a Kind is: ${
     fourCount / NUM_TRIALS
+  }%`
+);
+
+console.log(
+  `The empirical probability of getting a Full House is: ${
+    houseCount / NUM_TRIALS
+  }%`
+);
+
+console.log(
+  `The empirical probability of getting a Straight is: ${
+    straightCount / NUM_TRIALS
+  }%`
+);
+
+console.log(
+  `The empirical probability of getting a Straight Flush is: ${
+    straightFlushCount / NUM_TRIALS
   }%`
 );
