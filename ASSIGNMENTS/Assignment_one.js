@@ -1,4 +1,4 @@
-NUM_TRIALS = 1000;
+NUM_TRIALS = 10000;
 
 function drawOneCard() {
   const suits = ["H", "C", "D", "H"];
@@ -195,7 +195,7 @@ for (let i = 0; i < NUM_TRIALS; i++) {
 }
 
 console.log(
-  `The empirical probability of getting a flush is: ${flushCount / NUM_TRIALS}%`
+  `The empirical probability of getting a Flush is: ${flushCount / NUM_TRIALS}%`
 );
 
 console.log(
