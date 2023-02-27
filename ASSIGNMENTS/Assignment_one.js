@@ -59,12 +59,19 @@ console.log(isFlush(hand));
 
 // Define a function for three of a kind
 
+// creates a variabe that .maps through every element of the hand and implements the below function
+
+//  function is to split the elements in the array by a space and pulls the second element which is the ranks
+
+// Uses a for loop which filters through the array and checks if the rank pulled matches the previous rank. If the cout is equal to 3 it should retutn 3 of a kind
+
 function isThreeOfAKind(hand) {
   const ranks = hand.map((card) => card.split(" ")[1]);
 
   for (let i = 0; i < ranks.length; i++) {
     const count = ranks.filter((rank) => rank === ranks[i]).length;
     if (count === 3) {
+      threeCount++;
       return "You have three of a kind!";
     }
   }
@@ -74,6 +81,8 @@ function isThreeOfAKind(hand) {
 console.log(isThreeOfAKind(hand));
 
 // Define a function for four of a kind
+
+// Same method as above expect count must equal to 4
 
 function isFourOfAKind(hand) {
   const ranks = hand.map((card) => card.split(" ")[1]);
@@ -92,6 +101,12 @@ function isFourOfAKind(hand) {
 console.log(isFourOfAKind(hand));
 
 // Define function for a Full House
+
+// creates a variabe that .maps through every element of the hand and implements the below function
+
+//  function is to split the elements in the array by a space and pulls the second element which is the ranks
+
+// Uses a for loop which filters through the array and checks if the rank pulled matches the previous rank. If the cout is equal to 3 then it should run the nested to repeat the process however ranks must not equal previous ranks and equal to 2
 
 function fullHouse(hand) {
   const ranks = hand.map((card) => card.split(" ")[1]);
@@ -117,9 +132,10 @@ console.log(fullHouse(hand));
 
 // Define function for a Straight
 
+// loops through the array and compares each index to the previous one to check if its one greater, it not equal returns empty string, else prints you have a straight
+
 function isStraight(hand) {
   for (let i = 1; i < hand.length; i++) {
-    // loops through the array and compares each index to the previous one to check if its one greater
     if (hand[i] !== hand[i - 1] + 1) {
       return "";
     }
@@ -132,6 +148,14 @@ console.log(isStraight(hand));
 
 // Define function for a Straight Flush
 
+// creates a variabe that .maps through every element of the hand and implements the below function
+
+//  function is to split the elements in the array by a space and pulls the first element which is the suits
+
+// uses the every method to check that current suit matches the first suit, once this returns true the for loop will run
+
+// loops through the array and compares each index to the previous one to check if its one greater, it not equal returns empty string, else prints you have a straight flush
+
 function isStraightFlush(hand) {
   const suits = hand.map(function (card) {
     return card.split(" ")[0];
@@ -140,22 +164,23 @@ function isStraightFlush(hand) {
     suits.every(function (suit) {
       return suit === suits[0];
     })
-  ) {
+  )
     for (let i = 1; i < hand.length; i++) {
-      if (hand[i] !== hand[i - 1] + 1) {
-        return "";
+      if (hand[i] === hand[i - 1] + 1) {
+        straightFlushCount++;
+        return "You have a Straight Flush!";
       }
     }
-    straightFlushCount++;
-    return "You have a Straight Flush!";
-  } else {
-    return "";
-  }
+  else return "";
 }
 
 console.log(isStraightFlush(hand));
 
 // print probability of getting each hand
+// use varibale to delare value of count for each hand
+// add ++ increment to each hand to add one to the hand count each time the functioin returns true
+// use for loop to loop through NUM TRIALS variable and print number of times hand is drawn
+// console log the hand count divided by number of NUM TRIALS
 
 let flushCount = 0;
 let threeCount = 0;
@@ -195,35 +220,37 @@ for (let i = 0; i < NUM_TRIALS; i++) {
 }
 
 console.log(
-  `The empirical probability of getting a Flush is: ${flushCount / NUM_TRIALS}%`
+  `The empirical probability of getting a Flush is: ${
+    (flushCount / NUM_TRIALS) * 100
+  }%`
 );
 
 console.log(
   `The empirical probability of getting Three of a Kind is: ${
-    threeCount / NUM_TRIALS
+    (threeCount / NUM_TRIALS) * 100
   }%`
 );
 
 console.log(
   `The empirical probability of getting Four of a Kind is: ${
-    fourCount / NUM_TRIALS
+    (fourCount / NUM_TRIALS) * 100
   }%`
 );
 
 console.log(
   `The empirical probability of getting a Full House is: ${
-    houseCount / NUM_TRIALS
+    (houseCount / NUM_TRIALS) * 100
   }%`
 );
 
 console.log(
   `The empirical probability of getting a Straight is: ${
-    straightCount / NUM_TRIALS
+    (straightCount / NUM_TRIALS) * 100
   }%`
 );
 
 console.log(
   `The empirical probability of getting a Straight Flush is: ${
-    straightFlushCount / NUM_TRIALS
+    (straightFlushCount / NUM_TRIALS) * 100
   }%`
 );
